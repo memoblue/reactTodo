@@ -1,1 +1,1 @@
-React Todo app tutorial.
+React to do app.
