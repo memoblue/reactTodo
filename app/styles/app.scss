@@ -1,0 +1,10 @@
+@import 'settings';
+@import 'settings.foundation';
+
+@import 'foundation'; // sassLoader in webpack
+@include foundation-everything;
+
+@import "layout";
+
+// components
+// @import "component.name";
