@@ -4,10 +4,10 @@ var expect = require('expect');
 var $ = require('jQuery'); // from webpack.ProvidePlugin in webpack.config.js
 var TestUtils = require('react-addons-test-utils');
 
-var Main = require('Main');
+var Todo = require('Todo');
 
-describe('Main', () => {
+describe('Todo', () => {
   it('should exist', () => {
-    expect(Main).toExist();
+    expect(Todo).toExist();
   });
 });
