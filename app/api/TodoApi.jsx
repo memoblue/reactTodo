@@ -18,5 +18,17 @@ module.exports = {
     }
 
     return $.isArray(todos) ? todos : [];
+  },
+  filterTodos: function(todos, showCompleted, searchText) {
+    var filteredTodos = todos;
+    // filter out completed
+    filteredTodos = filteredTodos.filter((todo) => { // filter keeps truthy
+      return !todo.completed || showCompleted; // OR to show all todos when state.showCompleted is true
+    });
+    // filter by search
+
+    // sort todos with non-comleted on top
+
+    return filteredTodos;
   }
 };
