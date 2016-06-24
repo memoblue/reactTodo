@@ -13,7 +13,7 @@ describe('TodoApi', () => {
 
 
   describe('setTodos', () => {
-    it('should set valid todos array'), () => {
+    it('should set valid todos array', () => {
       var todos = [{
         id: 1,
         text: 'Sample todo text',
@@ -23,7 +23,7 @@ describe('TodoApi', () => {
       var actualTodos = JSON.parse(localStorage.getItem('todos'));
 
       expect(actualTodos).toEqual(todos);
-    };
+    });
 
     it('should not set invalid todos array', () => {
       var invalidTodos = { a: 'b' };
@@ -62,27 +62,41 @@ describe('TodoApi', () => {
       },
       {
         id: 2,
-        text: 'Second text example',
+        text: 'Some second text example',
         completed: false
       },
       {
         id: 3,
-        text: 'Third text example',
+        text: 'Some third text example',
         completed: true
       }
     ];
 
     it('should return all items if showCompleted is true', () => {
       var filteredTodos = TodoApi.filterTodos(todos, true, '');
-
       expect(filteredTodos.length).toBe(3);
     });
 
     it('should return non-completed items if showCompleted is false', () => {
       var filteredTodos = TodoApi.filterTodos(todos, false, '');
-
       expect(filteredTodos.length).toBe(1);
     });
+
+    it('should sort todos with completed items at the bottom', () => {
+      var sortedTodos = TodoApi.filterTodos(todos, true, '');
+      expect(sortedTodos[0].completed).toBe(false);
+    })
+
+    it('should return all todos if searchText is empty', () => {
+      var filteredTodos = TodoApi.filterTodos(todos, true, '');
+      expect(filteredTodos.length).toBe(3);
+    });
+
+    it('should filter todos by searchText', () => {
+      var filteredTodos = TodoApi.filterTodos(todos, true, 'some');
+      expect(filteredTodos.length).toBe(2);
+    });
+
   });
 
 });
