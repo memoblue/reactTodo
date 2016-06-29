@@ -14,7 +14,7 @@ var AddTodo = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="timer__ui__footer">
         <form onSubmit={this.onSubmit}>
           <input type="text" ref="todoField" placeholder="Enter your next to do" />
           <button className="button expanded">Add To do</button>

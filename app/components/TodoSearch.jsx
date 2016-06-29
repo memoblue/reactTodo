@@ -9,7 +9,7 @@ var TodoSearch = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="timer__ui__header">
         <div>
           <input onChange={this.handleSearch} type="search" ref="searchField" placeholder="Search todos" />
         </div>

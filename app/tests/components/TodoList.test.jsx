@@ -28,4 +28,12 @@ describe('TodoList', () => {
 
     expect(todoComponents.length).toBe(todos.length);
   });
+
+  it('should render placeholder text if todo list is empty', () => {
+    var todos = [];
+    var todoList = TestUtils.renderIntoDocument(<TodoList todos={todos} />);
+    var $el = $(ReactDOM.findDOMNode(todoList));
+
+    expect($el.find('.timer__ui__placeholder').length).toBe(1);
+  });
 });
