@@ -1,29 +1,29 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var { Provider } = require('react-redux')
 var { Route, Router, IndexRoute, hashHistory } = require('react-router');
-var TodoApp = require('TodoApp');
 
+// redux
 var actions = require('actions');
 var store = require('configureStore').configure();
+// react
+var TodoApp = require('TodoApp');
 
 store.subscribe(() => {
   console.log('State: ', store.getState());
 });
 
-store.dispatch(actions.addTodo('Clean something for 15mn'));
-store.dispatch(actions.setSearchText('Yarlop'));
-store.dispatch(actions.toggleShowCompleted());
-
 // Load foundation
 $(document).foundation();
+
+store.dispatch(actions.addTodo('Some Text from redux'));
 
 // Styles
 require('style!css!sass!applicationStyles');
 
 ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route path="/" component={TodoApp}>
-        </Route>
-    </Router>,
+    <Provider store={store}>
+      <TodoApp />
+    </Provider>,
     document.getElementById('app')
 );
