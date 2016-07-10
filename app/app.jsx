@@ -9,14 +9,12 @@ var store = require('configureStore').configure();
 // react
 var TodoApp = require('TodoApp');
 
-store.subscribe(() => {
-  console.log('State: ', store.getState());
-});
+// store.subscribe(() => {
+//   console.log('State: ', store.getState());
+// });
 
 // Load foundation
 $(document).foundation();
-
-store.dispatch(actions.addTodo('Some Text from redux'));
 
 // Styles
 require('style!css!sass!applicationStyles');
