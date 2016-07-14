@@ -1,3 +1,7 @@
+import moment from 'moment';
+
+import firebase, { fbRef } from 'app/firebase/';
+
 export var setSearchText = (searchText) => {
   return {
     type: 'SET_SEARCH_TEXT',
@@ -11,10 +15,29 @@ export var toggleShowCompleted = () => {
   }
 };
 
-export var addTodo = (text) => {
+export var addTodo = (todo) => {
   return {
     type: 'ADD_TODO',
-    text
+    todo
+  };
+};
+
+export var startAddTodo = (text) => {
+  return (dispatch, getState) => { // dispatch/getState from redux-thunk
+    var todo = {
+      text,
+      completed: false,
+      createdAt: moment().unix(),
+      completedAt: null
+    };
+    var todoRef = fbRef.child('todos').push(todo);
+
+    return todoRef.then(() => {
+      dispatch(addTodo({
+        ...todo,
+        id: todoRef.key
+      }));
+    })
   };
 };
 

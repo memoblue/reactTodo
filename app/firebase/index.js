@@ -13,5 +13,5 @@ try {
 
 }
 
-export var fbRef = firebase.database.ref();
+export var fbRef = firebase.database().ref();
 export default firebase; // so we can import only this file elsewhere
