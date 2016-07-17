@@ -30,7 +30,7 @@ export var startAddTodo = (text) => {
       createdAt: moment().unix(),
       completedAt: null
     };
-    var todoRef = fbRef.child('todos').push(todo);
+    var todoRef = fbRef.child('todos').push(todo); // call to firebase returns promise
 
     return todoRef.then(() => {
       dispatch(addTodo({
