@@ -22,7 +22,7 @@ export var Todo = React.createClass({
     } ;
     return (
       <div className={todoClassName}>
-        <p><label><input type="checkbox" checked={completed} onChange={() => { dispatch(actions.toggleTodo(id)) }} /> {text}</label></p>
+        <p><label><input type="checkbox" checked={completed} onChange={() => { dispatch(actions.startToggleTodo(id, !completed)) }} /> {text}</label></p>
         <p className="timer__todo__date">{renderDate()}</p>
       </div>
     );
