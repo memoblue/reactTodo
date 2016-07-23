@@ -11,6 +11,7 @@ var store = require('configureStore').configure();
 // react
 var TodoApp = require('TodoApp');
 
+// Initial todo loaded from Firebasw
 store.dispatch(actions.startAddTodos());
 
 // Load foundation
