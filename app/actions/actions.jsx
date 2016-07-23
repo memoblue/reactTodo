@@ -48,6 +48,23 @@ export var addTodos = (todos) => { // initial todos
   };
 };
 
+export var startAddTodos = () => {
+  return (dispatch, getState) => {
+    var todosRef = fbRef.child('todos');
+
+    return todosRef.once('value').then((snapshot) => {
+      var todos = snapshot.val() || {};
+      var parsedTodos = Object.keys(todos).map((key) => {
+        return {
+          ...todos[key],
+          id: key
+        }
+      });
+      dispatch(addTodos(parsedTodos));
+    });
+  };
+};
+
 export var updateTodo = (id, updates) => {
   return {
     type: 'UPDATE_TODO',

@@ -11,13 +11,7 @@ var store = require('configureStore').configure();
 // react
 var TodoApp = require('TodoApp');
 
-store.subscribe(() => {
-  var state = store.getState();
-  TodoApi.setTodos(state.todos);
-});
-
-var todos = TodoApi.getTodos();
-store.dispatch(actions.addTodos(todos));
+store.dispatch(actions.startAddTodos());
 
 // Load foundation
 $(document).foundation();
