@@ -3,10 +3,10 @@ import firebase from 'firebase';
 try {
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyB-O952KDFCq-BDPvFOk2n-fko6Q3vuy6E",
-    authDomain: "memotodo-38e5a.firebaseapp.com",
-    databaseURL: "https://memotodo-38e5a.firebaseio.com",
-    storageBucket: "memotodo-38e5a.appspot.com",
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    storageBucket: process.env.STORAGE_BUCKET
   };
   firebase.initializeApp(config);
 } catch (e) {
