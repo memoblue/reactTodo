@@ -1,1 +1,1 @@
-React to do app.
+React Todo app.
