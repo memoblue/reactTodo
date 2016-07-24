@@ -9,7 +9,7 @@ var TodoApi = require('TodoApi');
 var actions = require('actions');
 var store = require('configureStore').configure();
 // react
-var TodoApp = require('TodoApp');
+import TodoApp from 'TodoApp';
 import Login from 'Login';
 
 // Initial todo loaded from Firebasw
