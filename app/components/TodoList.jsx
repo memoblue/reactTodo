@@ -9,7 +9,7 @@ export var TodoList = React.createClass({
     var renderList = () => {
       var filteredTodos = TodoApi.filterTodos(todos, showCompleted, searchText);
       if (filteredTodos.length === 0) {
-        return (<p className="timer__ui__placeholder">Nothing to do…</p>);
+        return (<p className="todo__ui__placeholder">Nothing to do…</p>);
       } else {
         return (
           filteredTodos.map((todo) => {

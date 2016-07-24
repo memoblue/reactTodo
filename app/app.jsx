@@ -10,6 +10,7 @@ var actions = require('actions');
 var store = require('configureStore').configure();
 // react
 var TodoApp = require('TodoApp');
+import Login from 'Login';
 
 // Initial todo loaded from Firebasw
 store.dispatch(actions.startAddTodos());
@@ -22,7 +23,12 @@ require('style!css!sass!applicationStyles');
 
 ReactDOM.render(
     <Provider store={store}>
-      <TodoApp />
+      <Router history={hashHistory}>
+        <Route path="/">
+            <Route path="todo" component={TodoApp} />
+            <IndexRoute component={Login} />
+        </Route>
+      </Router>
     </Provider>,
     document.getElementById('app')
 );

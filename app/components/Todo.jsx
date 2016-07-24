@@ -8,7 +8,7 @@ export var Todo = React.createClass({
   render: function() {
     // dispatch is availble on props via connect()
     var { id, text, completed, createdAt, completedAt, dispatch } = this.props;
-    var todoClassName = completed ? 'timer__todo timer__todo--completed' : 'timer__todo';
+    var todoClassName = completed ? 'todo__todo todo__todo--completed' : 'todo__todo';
     var renderDate = () => {
       var msg = 'Created ';
       var timestamp = createdAt;
@@ -23,7 +23,7 @@ export var Todo = React.createClass({
     return (
       <div className={todoClassName}>
         <p><label><input type="checkbox" checked={completed} onChange={() => { dispatch(actions.startToggleTodo(id, !completed)) }} /> {text}</label></p>
-        <p className="timer__todo__date">{renderDate()}</p>
+        <p className="todo__todo__date">{renderDate()}</p>
       </div>
     );
   }

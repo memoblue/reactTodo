@@ -9,11 +9,14 @@ import TodoSearch from 'TodoSearch';
 var TodoApp = React.createClass({
   render: function() {
     return (
-      <div className="timer">
-        <h1 className="text-center timer__title">To do app</h1>
+      <div className="todo">
+        <div className="auth__logout">
+          <a href="#">Logout</a>
+        </div>
+        <h1 className="layout__title">Todo app</h1>
         <div className="row">
           <div className="colum small-centered small-11 medium-6 large-5">
-            <div className="timer__ui">
+            <div className="todo__ui">
               <TodoSearch />
               <TodoList />
               <AddTodo />

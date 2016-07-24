@@ -7,7 +7,7 @@ export var TodoSearch = React.createClass({
   render: function() {
     var { dispatch, showCompleted, searchText } = this.props;
     return (
-      <div className="timer__ui__header">
+      <div className="todo__ui__header">
         <div>
           <input
             type="search"
