@@ -30,7 +30,8 @@ export var startAddTodo = (text) => {
       createdAt: moment().unix(),
       completedAt: null
     };
-    var todoRef = fbRef.child('todos').push(todo); // call to firebase returns promise
+    var uid = getState().auth.uid; // getState() <= redux store
+    var todoRef = fbRef.child(`users/${uid}/todos`).push(todo); // call to firebase returns promise
 
     return todoRef.then(() => {
       dispatch(addTodo({
@@ -50,7 +51,8 @@ export var addTodos = (todos) => { // initial todos
 
 export var startAddTodos = () => {
   return (dispatch, getState) => {
-    var todosRef = fbRef.child('todos');
+    var uid = getState().auth.uid; // getState() <= redux store
+    var todosRef = fbRef.child(`users/${uid}/todos`);
 
     return todosRef.once('value').then((snapshot) => {
       var todos = snapshot.val() || {};
@@ -75,7 +77,8 @@ export var updateTodo = (id, updates) => {
 
 export var startToggleTodo = (id, completed) => {
   return (dispatch, getState) => {
-    var todoRef = fbRef.child(`todos/${id}`);
+    var uid = getState().auth.uid; // getState() <= redux store
+    var todoRef = fbRef.child(`users/${uid}/todos/${id}`);
     var updates = {
       completed,
       completedAt: completed ? moment().unix() : null
