@@ -89,4 +89,31 @@ describe('Reducers', () => {
       expect(res[0]).toEqual(todos[0]);
     });
   });
+
+  describe('authReducer', () => {
+    it('should add uid to store on login', () => {
+      const action = {
+        type: 'LOGIN',
+        uid: '123'
+      };
+      const res = reducers.authReducer(undefined, df(action)); // undefined means we use default {}
+
+      expect(res).toEqual({
+        uid: action.uid
+      });
+    });
+
+    it('should reset auth to empty object on logout', () => {
+      const authData = {
+        auth: '123'
+      };
+      const action = {
+        type: 'LOGOUT'
+      };
+      const res = reducers.authReducer(df(authData), df(action));
+
+      expect(res).toEqual({});
+    });
+
+  });
 });
