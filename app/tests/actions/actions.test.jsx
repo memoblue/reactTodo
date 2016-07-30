@@ -42,6 +42,15 @@ describe('Actions', () => {
     expect(res).toEqual(action);
   });
 
+  it('should generate REMOVE_TODOS action', () => {
+    var action = {
+      type: 'REMOVE_TODOS'
+    };
+    var res = actions.removeTodos();
+
+    expect(res).toEqual(action);
+  });
+
   it('should generate ADD_TODOS action', () => {
     var todos = [
       {
@@ -100,9 +109,7 @@ describe('Actions', () => {
 
     beforeEach((done) => {
       var cred = firebase.auth.GithubAuthProvider.credential(process.env.GITHUB_ACCESS_TOKEN);
-console.log("called? 01");
       firebase.auth().signInWithCredential(cred).then((user) => {
-console.log("called? 02");
         uid = user.uid;
         todosRef = fbRef.child(`users/${uid}/todos`);
 

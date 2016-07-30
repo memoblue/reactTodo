@@ -11,12 +11,17 @@ import router from 'app/router/'
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(actions.login(user.uid));
-    store.dispatch(actions.startAddTodos()); // Initial todo loaded from Firebasw
+    store.dispatch(actions.startAddTodos()); // Initial todo loaded from Firebase
     hashHistory.push('/todos');
   } else {
     store.dispatch(actions.logout());
+    store.dispatch(actions.removeTodos());
     hashHistory.push('/');
   }
+});
+
+store.subscribe(() => {
+  console.log(store.getState());
 });
 
 // Load foundation

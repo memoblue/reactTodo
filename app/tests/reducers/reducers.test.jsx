@@ -88,6 +88,24 @@ describe('Reducers', () => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(todos[0]);
     });
+
+    it('should remove all todos', () => {
+      var todos = [
+        {
+          id: '123',
+          text: 'some text',
+          completed: false,
+          completedAt: undefined,
+          createdAt: 500
+        }
+      ];
+      var action = {
+        type: 'REMOVE_TODOS'
+      };
+      var res = reducers.todosReducer(df(todos), df(action));
+      expect(res).toEqual([]);
+    });
+
   });
 
   describe('authReducer', () => {

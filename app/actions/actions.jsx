@@ -49,6 +49,12 @@ export var addTodos = (todos) => { // initial todos
   };
 };
 
+export var removeTodos = () => {
+  return {
+    type: 'REMOVE_TODOS'
+  };
+};
+
 export var startAddTodos = () => {
   return (dispatch, getState) => {
     var uid = getState().auth.uid; // getState() <= redux store

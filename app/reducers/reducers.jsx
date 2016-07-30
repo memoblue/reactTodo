@@ -26,11 +26,6 @@ export var todosReducer = (state = [], action) => {
         ...state,
         action.todo
       ];
-    case 'ADD_TODOS':
-      return [
-        ...state,
-        ...action.todos
-      ];
     case 'UPDATE_TODO':
       return state.map((todo) => {
         if (todo.id === action.id) {
@@ -42,6 +37,13 @@ export var todosReducer = (state = [], action) => {
           return todo;
         }
       });
+    case 'ADD_TODOS':
+      return [
+        ...state,
+        ...action.todos
+      ];
+    case 'REMOVE_TODOS':
+      return [];
     default:
       return state;
   }
