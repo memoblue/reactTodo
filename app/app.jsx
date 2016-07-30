@@ -20,10 +20,6 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
-
 // Load foundation
 $(document).foundation();
 
